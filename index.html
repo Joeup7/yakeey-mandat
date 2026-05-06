@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire Mandat - Sélection</title>
+    <title>Sélection de Mandat Immobilier</title>
     <style>
-        /* هوية بصرية عصرية */
         :root {
-            --primary-color: #1e40af; /* أزرق ملكي */
-            --accent-color: #3b82f6;
+            --primary-color: #1e40af;
             --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             --text-main: #0f172a;
             --success: #10b981;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background: var(--bg-gradient);
             color: var(--text-main);
             display: flex;
@@ -28,108 +26,60 @@
 
         .container {
             background: white;
-            padding: 40px;
+            padding: 35px;
             border-radius: 20px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
         }
 
         h2 {
             color: var(--primary-color);
-            font-size: 1.6rem;
             text-align: center;
-            margin-bottom: 30px;
-            font-weight: 700;
-            letter-spacing: -0.025em;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
         }
 
-        .input-group {
-            margin-bottom: 20px;
-        }
+        .input-group { margin-bottom: 18px; }
 
         label {
             display: block;
             font-weight: 600;
             margin-bottom: 8px;
-            font-size: 0.9rem;
             color: #475569;
+            font-size: 0.9rem;
         }
 
-        input[type="text"], input[type="tel"] {
+        input[type="text"], input[type="tel"], input[type="number"] {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border: 2px solid #e2e8f0;
-            border-radius: 12px;
+            border-radius: 10px;
             font-size: 1rem;
             box-sizing: border-box;
-            transition: border-color 0.2s;
-        }
-
-        input:focus {
-            border-color: var(--accent-color);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .options-label {
-            font-weight: 700;
-            margin: 25px 0 15px;
-            color: var(--text-main);
-            font-size: 1rem;
         }
 
         .option-card {
             border: 2px solid #f1f5f9;
-            border-radius: 15px;
-            padding: 18px;
-            margin-bottom: 15px;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s;
             display: flex;
             align-items: center;
             background: #f8fafc;
         }
 
-        .option-card:hover {
-            border-color: var(--accent-color);
-            background: #eff6ff;
-            transform: translateY(-2px);
-        }
-
-        input[type="radio"] {
-            width: 20px;
-            height: 20px;
-            margin-right: 15px;
-            cursor: pointer;
-            accent-color: var(--primary-color);
-        }
-
-        .option-text {
-            font-weight: 600;
-            color: var(--text-main);
-        }
+        .option-card:hover { border-color: #3b82f6; background: #eff6ff; }
 
         .confirmation-box {
             display: none;
-            margin-top: 25px;
-            padding: 20px;
+            margin-top: 20px;
+            padding: 15px;
             background: #ecfdf5;
-            border-radius: 12px;
+            border-radius: 10px;
             border-left: 5px solid var(--success);
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .confirmation-box p {
-            margin: 0;
-            color: #065f46;
-            font-size: 0.95rem;
-            line-height: 1.6;
         }
 
         button {
@@ -137,30 +87,27 @@
             background: var(--primary-color);
             color: white;
             border: none;
-            padding: 16px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 10px;
             font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 20px;
-            transition: background 0.2s;
-        }
-
-        button:hover {
-            background: #1e3a8a;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Merci de sélectionner votre mandat.</h2>
+    <h2>Détails du Mandat de Vente</h2>
     
     <form action="https://formsubmit.co/youssof.mazouz@gmail.com" method="POST">
-        
+        <input type="hidden" name="_language" value="fr">
+        <input type="hidden" name="_captcha" value="false">
+
         <div class="input-group">
             <label>Nom complet du client</label>
-            <input type="text" name="Nom_Client" placeholder="Ex: Ahmed Benani" required>
+            <input type="text" name="Nom_Client" placeholder="Ex: Madame Hayat" required>
         </div>
 
         <div class="input-group">
@@ -168,34 +115,55 @@
             <input type="tel" name="Téléphone" placeholder="06XXXXXXXX" required>
         </div>
 
-        <div class="options-label">Type de Mandat souhaité :</div>
+        <div class="input-group">
+            <label>Prix de vente souhaité (MAD)</label>
+            <input type="number" id="prixVente" name="Prix_Vente" placeholder="Ex: 1500000" oninput="updateSummary()" required>
+        </div>
+
+        <label>Type de Mandat souhaité :</label>
 
         <div class="option-card" onclick="selectMandat('Mandat exclusive (3 mois) > 2% TTC', 'opt1')">
             <input type="radio" id="opt1" name="Type_Mandat" value="Exclusif 3 mois (2%)" required>
-            <label for="opt1" class="option-text">Mandat exclusive (3 mois) > 2% TTC</label>
+            <label for="opt1" style="cursor:pointer; margin-left:10px;">Mandat exclusive (3 mois) > 2% TTC</label>
         </div>
 
         <div class="option-card" onclick="selectMandat('Mandat exclusive (6 mois) > 1.80% TTC', 'opt2')">
             <input type="radio" id="opt2" name="Type_Mandat" value="Exclusif 6 mois (1.80%)">
-            <label for="opt2" class="option-text">Mandat exclusive (6 mois) > 1.80% TTC</label>
+            <label for="opt2" style="cursor:pointer; margin-left:10px;">Mandat exclusive (6 mois) > 1.80% TTC</label>
         </div>
 
         <div id="confirmBox" class="confirmation-box">
-            <p id="selectedText"></p>
-            <p><strong>Nous apprécions votre confiance.</strong></p>
+            <p id="selectedText" style="margin:0; color:#065f46;"></p>
+            <p id="priceText" style="margin:5px 0 0; color:#065f46;"></p>
+            <p style="margin-top:10px; color:#065f46;"><strong>Merci pour votre confiance. Nous apprécions votre collaboration.</strong></p>
         </div>
 
-        <button type="submit">Valider et Envoyer</button>
+        <button type="submit">Confirmer et Envoyer</button>
     </form>
 </div>
 
 <script>
+    let selectedMandatText = "";
+
     function selectMandat(val, id) {
         document.getElementById(id).checked = true;
+        selectedMandatText = val;
+        updateSummary();
+    }
+
+    function updateSummary() {
+        const prix = document.getElementById('prixVente').value;
         const box = document.getElementById('confirmBox');
-        const text = document.getElementById('selectedText');
-        box.style.display = 'block';
-        text.innerHTML = "Le mandat choisi est <b>" + val + "</b>.";
+        const textMandat = document.getElementById('selectedText');
+        const textPrice = document.getElementById('priceText');
+
+        if (selectedMandatText) {
+            box.style.display = 'block';
+            textMandat.innerHTML = "Mandat choisi : <b>" + selectedMandatText + "</b>";
+            if (prix) {
+                textPrice.innerHTML = "Prix de vente : <b>" + Number(prix).toLocaleString() + " MAD</b>";
+            }
+        }
     }
 </script>
 
