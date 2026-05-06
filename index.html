@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yakeey - Mandat de Vente</title>
+    <title>Mandat de Vente - Youssef Mazouz</title>
     <style>
-        /* الهوية البصرية المستوحاة من Yakeey (أبيض، أسود، رمادي) */
+        /* هوية بصرية مستوحاة من Yakeey مع جماليات متطورة */
         :root {
-            --yakeey-black: #000000;
+            --yakeey-black: #111111;
             --yakeey-white: #ffffff;
-            --yakeey-gray-bg: #f5f5f5;
-            --yakeey-gray-border: #e0e0e0;
-            --yakeey-text-muted: #666666;
-            --yakeey-success: #10b981;
+            --yakeey-accent: #2563eb; /* لمسة أزرق خفيفة للتركيز */
+            --soft-gray: #f9fafb;
+            --border-color: #e5e7eb;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--yakeey-white);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--soft-gray);
             color: var(--yakeey-black);
             display: flex;
             justify-content: center;
@@ -28,82 +27,107 @@
         }
 
         .container {
+            background: var(--yakeey-white);
             width: 100%;
-            max-width: 500px;
-            padding: 40px 20px;
+            max-width: 520px;
+            padding: 50px 40px;
+            border-radius: 2px; /* زوايا حادة بلمسة عصرية */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08); /* ظل ناعم وجميل */
         }
 
         h2 {
-            font-size: 24px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 40px;
-            text-align: left;
-            text-transform: none;
-            letter-spacing: -0.5px;
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 45px;
+            color: var(--yakeey-black);
+            border-left: 4px solid var(--yakeey-black);
+            padding-left: 15px;
         }
 
         .input-group {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            position: relative;
         }
 
         label {
             display: block;
-            font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 12px;
+            margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            color: #4b5563;
         }
 
         input[type="text"], input[type="tel"], input[type="number"] {
             width: 100%;
-            padding: 15px 0;
+            padding: 12px 0;
             border: none;
-            border-bottom: 2px solid var(--yakeey-black);
+            border-bottom: 2px solid var(--border-color);
             border-radius: 0;
-            font-size: 16px;
+            font-size: 17px;
             background: transparent;
-            transition: border-color 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         input:focus {
             outline: none;
-            border-bottom-color: var(--yakeey-text-muted);
+            border-bottom-color: var(--yakeey-black);
+        }
+
+        .options-container {
+            margin-top: 40px;
         }
 
         .option-card {
-            border: 1px solid var(--yakeey-gray-border);
-            padding: 20px;
+            border: 1px solid var(--border-color);
+            padding: 22px;
             margin-bottom: 15px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .option-card:hover {
+            background-color: #fcfcfc;
             border-color: var(--yakeey-black);
+            transform: translateX(5px); /* حركة جمالية عند المرور بالفأرة */
+        }
+
+        .option-card.selected {
+            border-color: var(--yakeey-black);
+            background-color: #f9fafb;
         }
 
         input[type="radio"] {
             accent-color: var(--yakeey-black);
-            width: 20px;
-            height: 20px;
-            margin-right: 15px;
+            width: 18px;
+            height: 18px;
+            margin-right: 18px;
+        }
+
+        .option-text {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1f2937;
         }
 
         .confirmation-box {
             display: none;
-            margin-top: 30px;
-            padding: 20px;
-            border: 1px solid var(--yakeey-black);
-            background-color: var(--yakeey-gray-bg);
-            animation: fadeIn 0.4s ease;
+            margin-top: 35px;
+            padding: 25px;
+            border-left: 4px solid var(--yakeey-black);
+            background-color: #f3f4f6;
+            animation: slideIn 0.5s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; } to { opacity: 1; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         button {
@@ -111,43 +135,43 @@
             background-color: var(--yakeey-black);
             color: var(--yakeey-white);
             border: none;
-            padding: 20px;
-            font-size: 16px;
-            font-weight: 700;
+            padding: 22px;
+            font-size: 15px;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             cursor: pointer;
-            margin-top: 30px;
-            transition: opacity 0.3s;
+            margin-top: 40px;
+            transition: all 0.3s ease;
         }
 
         button:hover {
-            opacity: 0.8;
+            background-color: #333333;
+            letter-spacing: 4px; /* تأثير جمالي عند الضغط */
         }
 
-        .footer-note {
-            font-size: 12px;
-            color: var(--yakeey-text-muted);
-            margin-top: 20px;
+        .footer-brand {
+            margin-top: 30px;
             text-align: center;
+            font-size: 11px;
+            color: #9ca3af;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- الترويسة المختارة -->
     <h2>Merci de finaliser votre choix de mandat et le prix de vente souhaité</h2>
     
-    <!-- تم إعداد البريد الإلكتروني الخاص بك هنا -->
     <form action="https://formsubmit.co/youssof.mazouz@gmail.com" method="POST">
         <input type="hidden" name="_language" value="fr">
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="Nouveau Mandat - Client Youssef Mazouz">
 
         <div class="input-group">
-            <label>Nom complet</label>
-            <input type="text" name="Nom_Client" placeholder="Votre nom" required>
+            <label>Nom Complet</label>
+            <input type="text" name="Nom_Client" placeholder="Ex: Madame Hayat" required>
         </div>
 
         <div class="input-group">
@@ -157,29 +181,31 @@
 
         <div class="input-group">
             <label>Prix de vente souhaité (MAD)</label>
-            <input type="number" id="prixVente" name="Prix_Vente" placeholder="Ex: 2 000 000" oninput="updateSummary()" required>
+            <input type="number" id="prixVente" name="Prix_Vente" placeholder="Ex: 1 500 000" oninput="updateSummary()" required>
         </div>
 
-        <label>Type de Mandat</label>
+        <div class="options-container">
+            <label>Sélection du Mandat</label>
 
-        <div class="option-card" onclick="selectMandat('Mandat exclusive (3 mois) > 2% TTC', 'opt1')">
-            <input type="radio" id="opt1" name="Type_Mandat" value="Exclusif 3 mois (2%)" required>
-            <span style="font-weight: 500;">Mandat exclusive (3 mois) > 2% TTC</span>
-        </div>
+            <div class="option-card" onclick="selectMandat('Mandat exclusive (3 mois) > 2% TTC', 'opt1')">
+                <input type="radio" id="opt1" name="Type_Mandat" value="Exclusif 3 mois (2%)" required>
+                <span class="option-text">Mandat exclusive (3 mois) > 2% TTC</span>
+            </div>
 
-        <div class="option-card" onclick="selectMandat('Mandat exclusive (6 mois) > 1.80% TTC', 'opt2')">
-            <input type="radio" id="opt2" name="Type_Mandat" value="Exclusif 6 mois (1.80%)">
-            <span style="font-weight: 500;">Mandat exclusive (6 mois) > 1.80% TTC</span>
+            <div class="option-card" onclick="selectMandat('Mandat exclusive (6 mois) > 1.80% TTC', 'opt2')">
+                <input type="radio" id="opt2" name="Type_Mandat" value="Exclusif 6 mois (1.80%)">
+                <span class="option-text">Mandat exclusive (6 mois) > 1.80% TTC</span>
+            </div>
         </div>
 
         <div id="confirmBox" class="confirmation-box">
-            <p id="selectedText" style="margin:0 0 10px 0; font-weight:700;"></p>
-            <p id="priceText" style="margin:0 0 15px 0; font-weight:700;"></p>
-            <p style="margin:0; font-size:14px;">Merci pour votre confiance. Nous apprécions votre collaboration.</p>
+            <p id="selectedText" style="margin:0 0 8px 0; font-weight:700; font-size: 14px;"></p>
+            <p id="priceText" style="margin:0 0 15px 0; font-weight:700; font-size: 14px;"></p>
+            <p style="margin:0; font-size:13px; line-height: 1.5; color: #4b5563;">Merci pour votre confiance. Nous appréعions votre collaboration.</p>
         </div>
 
-        <button type="submit">Envoyer le formulaire</button>
-        <p class="footer-note">Youssef Mazouz - Conseiller Immobilier</p>
+        <button type="submit">Valider la sélection</button>
+        <div class="footer-brand">Youssef Mazouz • Expert Immobilier</div>
     </form>
 </div>
 
@@ -189,6 +215,11 @@
     function selectMandat(val, id) {
         document.getElementById(id).checked = true;
         selectedMandatText = val;
+        
+        // إضافة جمالية: تمييز الكرت المختار
+        document.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+        document.getElementById(id).parentElement.classList.add('selected');
+        
         updateSummary();
     }
 
@@ -200,7 +231,7 @@
 
         if (selectedMandatText) {
             box.style.display = 'block';
-            textMandat.innerHTML = "Mandat : " + selectedMandatText;
+            textMandat.innerHTML = "Mandat choisi : " + selectedMandatText;
             if (prix) {
                 textPrice.innerHTML = "Prix confirmé : " + Number(prix).toLocaleString() + " MAD";
             }
