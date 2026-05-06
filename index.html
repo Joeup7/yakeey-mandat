@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sélection de Mandat Immobilier</title>
+    <title>Yakeey - Mandat de Vente</title>
     <style>
+        /* الهوية البصرية المستوحاة من Yakeey (أبيض، أسود، رمادي) */
         :root {
-            --primary-color: #1e40af;
-            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            --text-main: #0f172a;
-            --success: #10b981;
+            --yakeey-black: #000000;
+            --yakeey-white: #ffffff;
+            --yakeey-gray-bg: #f5f5f5;
+            --yakeey-gray-border: #e0e0e0;
+            --yakeey-text-muted: #666666;
+            --yakeey-success: #10b981;
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--yakeey-white);
+            color: var(--yakeey-black);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,120 +28,158 @@
         }
 
         .container {
-            background: white;
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 480px;
+            max-width: 500px;
+            padding: 40px 20px;
         }
 
         h2 {
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 1.5rem;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            text-align: left;
+            text-transform: none;
+            letter-spacing: -0.5px;
         }
 
-        .input-group { margin-bottom: 18px; }
+        .input-group {
+            margin-bottom: 30px;
+        }
 
         label {
             display: block;
             font-weight: 600;
-            margin-bottom: 8px;
-            color: #475569;
-            font-size: 0.9rem;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         input[type="text"], input[type="tel"], input[type="number"] {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 1rem;
-            box-sizing: border-box;
+            padding: 15px 0;
+            border: none;
+            border-bottom: 2px solid var(--yakeey-black);
+            border-radius: 0;
+            font-size: 16px;
+            background: transparent;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-bottom-color: var(--yakeey-text-muted);
         }
 
         .option-card {
-            border: 2px solid #f1f5f9;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 12px;
+            border: 1px solid var(--yakeey-gray-border);
+            padding: 20px;
+            margin-bottom: 15px;
             cursor: pointer;
-            transition: 0.3s;
             display: flex;
             align-items: center;
-            background: #f8fafc;
+            transition: all 0.2s ease;
         }
 
-        .option-card:hover { border-color: #3b82f6; background: #eff6ff; }
+        .option-card:hover {
+            border-color: var(--yakeey-black);
+        }
+
+        input[type="radio"] {
+            accent-color: var(--yakeey-black);
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+        }
 
         .confirmation-box {
             display: none;
-            margin-top: 20px;
-            padding: 15px;
-            background: #ecfdf5;
-            border-radius: 10px;
-            border-left: 5px solid var(--success);
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid var(--yakeey-black);
+            background-color: var(--yakeey-gray-bg);
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; } to { opacity: 1; }
         }
 
         button {
             width: 100%;
-            background: var(--primary-color);
-            color: white;
+            background-color: var(--yakeey-black);
+            color: var(--yakeey-white);
             border: none;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 1.1rem;
+            padding: 20px;
+            font-size: 16px;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 30px;
+            transition: opacity 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .footer-note {
+            font-size: 12px;
+            color: var(--yakeey-text-muted);
+            margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Détails du Mandat de Vente</h2>
+    <!-- الترويسة المختارة -->
+    <h2>Merci de finaliser votre choix de mandat et le prix de vente souhaité</h2>
     
+    <!-- تم إعداد البريد الإلكتروني الخاص بك هنا -->
     <form action="https://formsubmit.co/youssof.mazouz@gmail.com" method="POST">
         <input type="hidden" name="_language" value="fr">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="Nouveau Mandat - Client Youssef Mazouz">
 
         <div class="input-group">
-            <label>Nom complet du client</label>
-            <input type="text" name="Nom_Client" placeholder="Ex: Madame Hayat" required>
+            <label>Nom complet</label>
+            <input type="text" name="Nom_Client" placeholder="Votre nom" required>
         </div>
 
         <div class="input-group">
-            <label>Numéro de téléphone</label>
+            <label>Téléphone</label>
             <input type="tel" name="Téléphone" placeholder="06XXXXXXXX" required>
         </div>
 
         <div class="input-group">
             <label>Prix de vente souhaité (MAD)</label>
-            <input type="number" id="prixVente" name="Prix_Vente" placeholder="Ex: 1500000" oninput="updateSummary()" required>
+            <input type="number" id="prixVente" name="Prix_Vente" placeholder="Ex: 2 000 000" oninput="updateSummary()" required>
         </div>
 
-        <label>Type de Mandat souhaité :</label>
+        <label>Type de Mandat</label>
 
         <div class="option-card" onclick="selectMandat('Mandat exclusive (3 mois) > 2% TTC', 'opt1')">
             <input type="radio" id="opt1" name="Type_Mandat" value="Exclusif 3 mois (2%)" required>
-            <label for="opt1" style="cursor:pointer; margin-left:10px;">Mandat exclusive (3 mois) > 2% TTC</label>
+            <span style="font-weight: 500;">Mandat exclusive (3 mois) > 2% TTC</span>
         </div>
 
         <div class="option-card" onclick="selectMandat('Mandat exclusive (6 mois) > 1.80% TTC', 'opt2')">
             <input type="radio" id="opt2" name="Type_Mandat" value="Exclusif 6 mois (1.80%)">
-            <label for="opt2" style="cursor:pointer; margin-left:10px;">Mandat exclusive (6 mois) > 1.80% TTC</label>
+            <span style="font-weight: 500;">Mandat exclusive (6 mois) > 1.80% TTC</span>
         </div>
 
         <div id="confirmBox" class="confirmation-box">
-            <p id="selectedText" style="margin:0; color:#065f46;"></p>
-            <p id="priceText" style="margin:5px 0 0; color:#065f46;"></p>
-            <p style="margin-top:10px; color:#065f46;"><strong>Merci pour votre confiance. Nous apprécions votre collaboration.</strong></p>
+            <p id="selectedText" style="margin:0 0 10px 0; font-weight:700;"></p>
+            <p id="priceText" style="margin:0 0 15px 0; font-weight:700;"></p>
+            <p style="margin:0; font-size:14px;">Merci pour votre confiance. Nous apprécions votre collaboration.</p>
         </div>
 
-        <button type="submit">Confirmer et Envoyer</button>
+        <button type="submit">Envoyer le formulaire</button>
+        <p class="footer-note">Youssef Mazouz - Conseiller Immobilier</p>
     </form>
 </div>
 
@@ -159,9 +200,9 @@
 
         if (selectedMandatText) {
             box.style.display = 'block';
-            textMandat.innerHTML = "Mandat choisi : <b>" + selectedMandatText + "</b>";
+            textMandat.innerHTML = "Mandat : " + selectedMandatText;
             if (prix) {
-                textPrice.innerHTML = "Prix de vente : <b>" + Number(prix).toLocaleString() + " MAD</b>";
+                textPrice.innerHTML = "Prix confirmé : " + Number(prix).toLocaleString() + " MAD";
             }
         }
     }
